@@ -53,7 +53,7 @@ if (typeof browser === 'undefined') var browser = chrome;
     const facebookWatchCssOn = '';
     const facebookWatchCssOff = 'a[href$="/watch/"], a[aria-label="Video"], div[aria-label*="video" i] { display: none !important; } /* mobile */ div[role="button"]:has(div[data-hidden-ref-key="videos.jewel.hidden"]) {display: none !important;} div.m.displayed:has(div[data-hidden-ref-key="videos.jewel.hidden"]) {background-color: white !important;} ';
     const facebookNotificationsCssOn = '';
-    const facebookNotificationsCssOff = 'div[aria-hidden="true"][aria-label*="Notifications"], div[data-hidden-ref-key="notifications.pill.jewel.hidden"], #screen-root div[data-mcomponent="MScreen"] div[data-mcomponent="MContainer"] div[data-mcomponent="MContainer"]:nth-child(2) div[role="button"]:nth-child(5) div[data-mcomponent="MContainer"]:nth-child(3) {visibility: hidden !important;}';
+    const facebookNotificationsCssOff = 'div[aria-label*="Notifications"], div[data-hidden-ref-key="notifications.pill.jewel.hidden"], #screen-root div[data-mcomponent="MScreen"] div[data-mcomponent="MContainer"] div[data-mcomponent="MContainer"]:nth-child(2) div[role="button"]:nth-child(5) div[data-mcomponent="MContainer"]:nth-child(3) {visibility: hidden !important;}';
     const facebookChatCssOn = 'div[role="complementary"] div[data-visualcompletion="ignore-dynamic"] > div.x1n2onr6:not([role="cell"]) { visibility: visible !important; }'; const facebookChatCssOff = 'div[role="complementary"] div[data-visualcompletion="ignore-dynamic"] > div.x1n2onr6:not([role="cell"]) { visibility: hidden !important; }';
     const facebookStoriesCssOn = 'div[aria-label="Stories"], #screen-root div[data-mcomponent="MContainer"] > div[data-mcomponent="MContainer"]:has(div[aria-label*="story"]) { display: block !important;}'; const facebookStoriesCssOff = 'div[aria-label="Stories"] { display: none !important; } #screen-root div[data-mcomponent="MContainer"] > div[data-mcomponent="MContainer"]:has(div[aria-label*="story"]) { display: none !important;}';
     const facebookSponsoredCssOn = ''; const facebookSponsoredCssOff = 'a[aria-label="Advertiser"] { display: none !important; }';
@@ -87,134 +87,6 @@ if (typeof browser === 'undefined') var browser = chrome;
     const redditChatCssOn = 'reddit-chat-header-button { display: block !important; }'; const redditChatCssOff = 'reddit-chat-header-button { display: none !important; }';
     const redditTrendingCssOn = '[search-telemetry-source="popular_carousel"] { display: block !important; }'; const redditTrendingCssOff = '[search-telemetry-source="popular_carousel"] { display: none !important; }';
     const redditPopularCommunitiesCssOn = '#popular-communities-list { display: block !important; } [aria-label="Popular Communities"] { display: block !important; }'; const redditPopularCommunitiesCssOff = '#popular-communities-list { display: none !important; } [aria-label="Popular Communities"] { display: none !important; }';
-
-    const css = {
-        /* ---------- YouTube ---------- */
-        youtubeSearchCssOn,
-        youtubeSearchCssOff,
-        youtubeSearchPredictCssOn,
-        youtubeSearchPredictCssOff,
-        youtubeRecVidsCssOn,
-        youtubeRecVidsCssOff,
-        youtubeThumbnailsCssOn,
-        youtubeThumbnailsCssOff,
-        youtubeThumbnailsCssBlur,
-        youtubeThumbnailsCssBlack,
-        youtubeNotificationsCssOn,
-        youtubeNotificationsCssOff,
-        youtubeNotificationsCssBlur,
-        youtubeNotificationsCssBlack,
-        youtubeProfileImgCssOn,
-        youtubeProfileImgCssOff,
-        youtubeShortsCssOn,
-        youtubeShortsCssOff,
-        youtubeSubscriptionsCssOn,
-        youtubeSubscriptionsCssOff,
-        youtubeHistoryCssOn,
-        youtubeHistoryCssOff,
-        youtubeExploreCssOn,
-        youtubeExploreCssOff,
-        youtubeMoreCssOn,
-        youtubeMoreCssOff,
-        youtubeRelatedCssOn,
-        youtubeRelatedCssOff,
-        youtubeSidebarCssOn,
-        youtubeSidebarCssOff,
-        youtubeCommentsCssOn,
-        youtubeCommentsCssOff,
-        youtubeAdsCssOn,
-        youtubeAdsCssOff,
-        youtubeViewsCssOn,
-        youtubeViewsCssOff,
-        youtubeLikesCssOn,
-        youtubeLikesCssOff,
-        youtubeSubscribersCssOn,
-        youtubeSubscribersCssOff,
-      
-        /* ---------- Facebook ---------- */
-        facebookFeedCssOn,
-        facebookFeedCssOff,
-        facebookWatchCssOn,
-        facebookWatchCssOff,
-        facebookNotificationsCssOn,
-        facebookNotificationsCssOff,
-        facebookChatCssOn,
-        facebookChatCssOff,
-        facebookStoriesCssOn,
-        facebookStoriesCssOff,
-        facebookSponsoredCssOn,
-        facebookSponsoredCssOff,
-      
-        /* ---------- X (Twitter) ---------- */
-        xExploreCssOn,
-        xExploreCssOff,
-        xNotificationsCssOn,
-        xNotificationsCssOff,
-        xTrendsCssOn,
-        xTrendsCssOff,
-        xFollowCssOn,
-        xFollowCssOff,
-        xTimelineCssOn,
-        xTimelineCssOff,
-      
-        /* ---------- Instagram ---------- */
-        instagramFeedCssOn,
-        instagramFeedCssOff,
-        instagramStoriesCssOn,
-        instagramStoriesCssOff,
-        instagramMutedStoriesCssOn,
-        instagramMutedStoriesCssOff,
-        instagramExploreCssOn,
-        instagramExploreCssOff,
-        instagramReelsCssOn,
-        instagramReelsCssOff,
-        instagramSuggestionsCssOn,
-        instagramSuggestionsCssOff,
-        instagramCommentsCssOn,
-        instagramCommentsCssOff,
-      
-        /* ---------- LinkedIn ---------- */
-        linkedinFeedCssOn,
-        linkedinFeedCssOff,
-        linkedinNotificationsCssOn,
-        linkedinNotificationsCssOff,
-        linkedinNewsCssOn,
-        linkedinNewsCssOff,
-        linkedinAdsCssOn,
-        linkedinAdsCssOff,
-      
-        /* ---------- WhatsApp ---------- */
-        whatsappPreviewCssOn,
-        whatsappPreviewCssOff,
-        whatsappNotificationPromptCssOn,
-        whatsappNotificationPromptCssOff,
-      
-        /* ---------- Google ---------- */
-        googleAdsCssOn,
-        googleAdsCssOff,
-        googleBackgroundCssOn,
-        googleBackgroundCssOff,
-      
-        /* ---------- Reddit ---------- */
-        redditFeedCssOn,
-        redditFeedCssOff,
-        redditPopularCssOn,
-        redditPopularCssOff,
-        redditAllCssOn,
-        redditAllCssOff,
-        redditRecentCssOn,
-        redditRecentCssOff,
-        redditCommunitiesCssOn,
-        redditCommunitiesCssOff,
-        redditNotificationCssOn,
-        redditNotificationCssOff,
-        redditChatCssOn,
-        redditChatCssOff,
-        redditTrendingCssOn,
-        redditTrendingCssOff,
-        redditPopularCommunitiesCssOn,
-        redditPopularCommunitiesCssOff
-      };
 
     // --- Shadow DOM Selectors (Unchanged) ---
     const shadowSelectors = {
@@ -319,23 +191,13 @@ if (typeof browser === 'undefined') var browser = chrome;
                 .filter(element => element.startsWith(currentPlatform))
                 .forEach(function(item) {
                     const styleName = item + "Style"; const itemStatusKey = item + "Status";
-                    if (!platformIsOn) { createStyleElement(styleName, css[`${item}CssOn`]); }
+                    if (!platformIsOn) { createStyleElement(styleName, eval(item + "CssOn")); }
                     else {
                         browser.storage.sync.get(itemStatusKey, function(itemResult) {
-                            let statusValue = itemResult[itemStatusKey];
-                            let cssToApply;
-
+                            let statusValue = itemResult[itemStatusKey]; let cssToApply;
                             if (item === "youtubeThumbnails" || item === "youtubeNotifications") {
-                                // multi-state elements
-                                const state = statusValue || "On";                 // "On", "Off", "Blur", "Black"
-                                cssToApply = css[`${item}Css${state}`];            // ← lookup instead of eval
-                            } else {
-                                // simple on/off elements
-                                cssToApply = statusValue === true
-                                        ? css[`${item}CssOff`]
-                                        : css[`${item}CssOn`];                  // ← lookup instead of eval
-                            }
-
+                                let state = statusValue || "On"; cssToApply = eval(item + "Css" + state);
+                            } else { cssToApply = (statusValue === true) ? eval(item + "CssOff") : eval(item + "CssOn"); }
                             createStyleElement(styleName, cssToApply);
                         });
                     }
@@ -363,58 +225,23 @@ if (typeof browser === 'undefined') var browser = chrome;
                 }); return true;
             }
             const currentCss = currentStyleElement.textContent; let responseText = "unknown";
-            const cssOn    = css[`${message.element}CssOn`];
-            const cssOff   = css[`${message.element}CssOff`];
-            const cssBlur  = css[`${message.element}CssBlur`];
-            const cssBlack = css[`${message.element}CssBlack`];
-
-            if (currentCss === cssOn) {
-                responseText = "visible";
-            } else if (currentCss === cssOff) {
-                responseText = "hidden";
-            } else if (message.element === "youtubeThumbnails" || message.element === "youtubeNotifications") {
-                if (currentCss === cssBlur) {
-                    responseText = "blur";
-                } else if (currentCss === cssBlack) {
-                    responseText =
-                        message.element === "youtubeNotifications" &&
-                        youtubeNotificationsCssBlack === youtubeNotificationsCssOff
-                            ? "hidden"
-                            : "black";
-                }
+            if (currentCss === eval(message.element + 'CssOn')) responseText = "visible";
+            else if (currentCss === eval(message.element + 'CssOff')) responseText = "hidden";
+            else if ((message.element === "youtubeThumbnails" || message.element === "youtubeNotifications")) {
+                if (currentCss === eval(message.element + 'CssBlur')) responseText = "blur";
+                else if (currentCss === eval(message.element + 'CssBlack')) responseText = (message.element === "youtubeNotifications" && youtubeNotificationsCssBlack === youtubeNotificationsCssOff) ? "hidden" : "black";
             }
             sendResponse({text: responseText}); return false;
         }
-        /* --- inside your message listener --- */
         if (message.method === "change" && message.element) {
-            const cssOn  = css[`${message.element}CssOn`];
-            const cssOff = css[`${message.element}CssOff`];
-
-            if (currentStyleElement) {
-                currentStyleElement.textContent =
-                    currentStyleElement.textContent === cssOn ? cssOff : cssOn;
-            } else {
-                createStyleElement(styleName, cssOff);
-            }
-
-        } else if (message.method === "changeMultiToggle" &&
-                message.element && message.action) {
-
-            const cssToApply = css[`${message.element}Css${message.action}`];
-            createStyleElement(styleName, cssToApply);
-
-        } else if (message.method === "showAll" && message.element) {
-            createStyleElement(styleName, css[`${message.element}CssOn`]);
-
-        } else if (message.method === "hideAll" && message.element) {
-            createStyleElement(styleName, css[`${message.element}CssOff`]);
-        // inside chrome.runtime.onMessage listener
-        } else if (message.method === "startSelecting") {
-                startSelecting();
-                sendResponse({ ok: true });
-                return true;                             // keep the port open for the async reply
-        } else if (message.method === "stopSelecting") { stopSelecting(message.cancelled); }
-          else if (message.method === "removeCustomElement" && message.selector && currentSiteIdentifier) {
+            if (currentStyleElement) { const cssOn = eval(message.element + 'CssOn'); const cssOff = eval(message.element + 'CssOff'); currentStyleElement.textContent = (currentStyleElement.textContent === cssOn) ? cssOff : cssOn; }
+            else { createStyleElement(styleName, eval(message.element + 'CssOff')); }
+        } else if (message.method === "changeMultiToggle" && message.element && message.action) { const cssToApply = eval(message.element + 'Css' + message.action); createStyleElement(styleName, cssToApply); }
+        else if (message.method === "showAll" && message.element) { const cssOn = eval(message.element + 'CssOn'); createStyleElement(styleName, cssOn); }
+        else if (message.method === "hideAll" && message.element) { const cssOff = eval(message.element + 'CssOff'); createStyleElement(styleName, cssOff); }
+        else if (message.method === "startSelecting") { startSelecting(); }
+        else if (message.method === "stopSelecting") { stopSelecting(message.cancelled); }
+        else if (message.method === "removeCustomElement" && message.selector && currentSiteIdentifier) {
             const customStorageKey = `${currentSiteIdentifier}CustomHiddenElements`;
             browser.storage.sync.get(customStorageKey, function(result) {
                 let customSelectors = result[customStorageKey] || []; if (!Array.isArray(customSelectors)) customSelectors = [];
@@ -438,8 +265,10 @@ if (typeof browser === 'undefined') var browser = chrome;
     let isSelecting = false;
     let highlightOverlay = null;
     let selectorDisplay = null;
+    let feedbackContainer = null;
     let currentHighlightedElement = null;
     let lastTapTime = 0;
+    let lastSelectedSelector = null;
     const highlightStyleId = 'mindshield-highlight-style';
 
     function createHighlightOverlay() {
@@ -467,11 +296,158 @@ if (typeof browser === 'undefined') var browser = chrome;
         }
     }
 
+    function createFeedbackContainer() {
+        if (!feedbackContainer) {
+            feedbackContainer = document.createElement('div');
+            feedbackContainer.id = 'mindshield-feedback-container';
+            feedbackContainer.style.position = 'fixed';
+            feedbackContainer.style.top = '10px';
+            feedbackContainer.style.left = '10px';
+            feedbackContainer.style.background = 'rgba(0, 0, 0, 0.8)';
+            feedbackContainer.style.color = 'white';
+            feedbackContainer.style.padding = '10px';
+            feedbackContainer.style.borderRadius = '5px';
+            feedbackContainer.style.zIndex = '2147483647';
+            feedbackContainer.style.fontFamily = 'Arial, sans-serif';
+            feedbackContainer.style.fontSize = '14px';
+            feedbackContainer.style.display = 'flex';
+            feedbackContainer.style.alignItems = 'center';
+            feedbackContainer.style.gap = '10px';
+            feedbackContainer.style.cursor = 'move';
+            feedbackContainer.style.userSelect = 'none';
+            document.body.appendChild(feedbackContainer);
+            updateFeedbackMessage('Click element to hide it');
+            setupDragEvents();
+        }
+    }
+
+    function setupDragEvents() {
+        let isDragging = false;
+        let currentX;
+        let currentY;
+        let initialX;
+        let initialY;
+
+        function startDragging(e) {
+            if (e.target.tagName === 'BUTTON' || e.target.closest('button')) return; // Ignore button clicks/touches
+            initialX = (e.clientX || e.touches[0].clientX) - currentX;
+            initialY = (e.clientY || e.touches[0].clientY) - currentY;
+            isDragging = true;
+            feedbackContainer.style.transition = 'none';
+        }
+
+        function drag(e) {
+            if (!isDragging) return;
+            e.preventDefault();
+            let clientX = e.clientX || (e.touches && e.touches[0].clientX);
+            let clientY = e.clientY || (e.touches && e.touches[0].clientY);
+            currentX = clientX - initialX;
+            currentY = clientY - initialY;
+
+            // Keep within viewport
+            currentX = Math.max(0, Math.min(currentX, window.innerWidth - feedbackContainer.offsetWidth));
+            currentY = Math.max(0, Math.min(currentY, window.innerHeight - feedbackContainer.offsetHeight));
+
+            feedbackContainer.style.left = `${currentX}px`;
+            feedbackContainer.style.top = `${currentY}px`;
+        }
+
+        function stopDragging() {
+            isDragging = false;
+            feedbackContainer.style.transition = 'all 0.2s ease';
+        }
+
+        // Initialize position
+        currentX = parseInt(feedbackContainer.style.left) || 10;
+        currentY = parseInt(feedbackContainer.style.top) || 10;
+
+        // Mouse events
+        feedbackContainer.addEventListener('mousedown', startDragging);
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('mouseup', stopDragging);
+
+        // Touch events
+        feedbackContainer.addEventListener('touchstart', startDragging, { passive: false });
+        document.addEventListener('touchmove', drag, { passive: false });
+        document.addEventListener('touchend', stopDragging);
+    }
+
+    
+
+    function updateFeedbackMessage(message, showUndo = false) {
+        if (!feedbackContainer) return;
+        feedbackContainer.innerHTML = `<span>${message}</span>`;
+        if (showUndo) {
+            const undoButton = document.createElement('button');
+            undoButton.textContent = 'Undo';
+            undoButton.style.background = '#555';
+            undoButton.style.color = 'white';
+            undoButton.style.border = 'none';
+            undoButton.style.padding = '5px 10px';
+            undoButton.style.borderRadius = '3px';
+            undoButton.style.cursor = 'pointer';
+            undoButton.addEventListener('click', handleUndo);
+            undoButton.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                handleUndo();
+            });
+            feedbackContainer.appendChild(undoButton);
+        }
+        const doneButton = document.createElement('button');
+        doneButton.textContent = 'Done';
+        doneButton.style.background = '#007bff';
+        doneButton.style.color = 'white';
+        doneButton.style.border = 'none';
+        doneButton.style.padding = '5px 10px';
+        doneButton.style.borderRadius = '3px';
+        doneButton.style.cursor = 'pointer';
+        doneButton.addEventListener('click', () => {
+            if (feedbackContainer) {
+                feedbackContainer.remove();
+                feedbackContainer = null;
+            }
+            stopSelecting(false);
+        });
+        doneButton.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (feedbackContainer) {
+                feedbackContainer.remove();
+                feedbackContainer = null;
+            }
+            stopSelecting(false);
+        });
+        feedbackContainer.appendChild(doneButton);
+    }
+
+    function handleUndo() {
+        if (!lastSelectedSelector || !currentSiteIdentifier) return;
+        const customStorageKey = `${currentSiteIdentifier}CustomHiddenElements`;
+        browser.storage.sync.get(customStorageKey, function(result) {
+            let customSelectors = result[customStorageKey] || [];
+            if (!Array.isArray(customSelectors)) customSelectors = [];
+            customSelectors = customSelectors.filter(s => s !== lastSelectedSelector);
+            browser.storage.sync.set({ [customStorageKey]: customSelectors }, function() {
+                if (chrome.runtime.lastError) {
+                    console.error("Error removing custom selector from storage:", chrome.runtime.lastError);
+                } else {
+                    applyCustomElementStyles(currentSiteIdentifier, customSelectors);
+                    console.log(`Undid hiding selector for ${currentSiteIdentifier}: ${lastSelectedSelector}`);
+                    lastSelectedSelector = null;
+                    updateFeedbackMessage('Click element to hide it');
+                }
+            });
+        });
+    }
+
     function startSelecting() {
         if (isSelecting) return;
         isSelecting = true;
         console.log("Starting element selection mode (click/tap).");
-        createHighlightOverlay(); createSelectorDisplay();
+        createHighlightOverlay();
+        createSelectorDisplay();
+        createFeedbackContainer();
         document.addEventListener('mousemove', highlightElement, true);
         document.addEventListener('touchstart', highlightElement, { capture: true, passive: true });
         document.addEventListener('click', selectElementOnClick, true);
@@ -487,9 +463,20 @@ if (typeof browser === 'undefined') var browser = chrome;
         document.removeEventListener('touchstart', highlightElement, { capture: true });
         document.removeEventListener('click', selectElementOnClick, true);
         document.removeEventListener('touchend', selectElementOnTap, true);
+        // Remove drag event listeners
+        if (feedbackContainer) {
+            feedbackContainer.removeEventListener('mousedown', startDragging);
+            feedbackContainer.removeEventListener('touchstart', startDragging);
+        }
+        document.removeEventListener('mousemove', drag);
+        document.removeEventListener('mouseup', stopDragging);
+        document.removeEventListener('touchmove', drag);
+        document.removeEventListener('touchend', stopDragging);
         if (highlightOverlay) { highlightOverlay.remove(); highlightOverlay = null; }
         if (selectorDisplay) { selectorDisplay.remove(); selectorDisplay = null; }
+        if (feedbackContainer) { feedbackContainer.remove(); feedbackContainer = null; }
         currentHighlightedElement = null;
+        lastSelectedSelector = null;
         document.body.classList.remove('mindshield-selecting');
         const tempStyle = document.getElementById(highlightStyleId); if(tempStyle) tempStyle.remove();
         if (cancelled) { browser.runtime.sendMessage({ method: "selectionCanceled" }).catch(e => console.debug("Popup likely closed:", e)); }
@@ -498,7 +485,7 @@ if (typeof browser === 'undefined') var browser = chrome;
     function highlightElement(event) {
         if (!isSelecting) return;
         const el = event.target;
-        if (!el || el === highlightOverlay || el === selectorDisplay || el === document.body || el === document.documentElement) {
+        if (!el || el === highlightOverlay || el === selectorDisplay || el === feedbackContainer || el.closest('#mindshield-feedback-container')) {
             if (highlightOverlay) highlightOverlay.style.display = 'none';
             if (selectorDisplay) selectorDisplay.style.display = 'none';
             currentHighlightedElement = null; return;
@@ -530,26 +517,27 @@ if (typeof browser === 'undefined') var browser = chrome;
         // Must be in selecting mode
         if (!isSelecting) return;
 
-        // **** MODIFICATION START ****
-        // Check if the click happened directly on the element we last highlighted.
-        // If not, ignore this click for selection purposes (it might be dismissing the popup or clicking elsewhere).
-        if (event.target !== currentHighlightedElement) {
-             console.log("Click target is not the highlighted element. Ignoring click for selection.", event.target, currentHighlightedElement);
-             // IMPORTANT: Do *not* call stopSelecting() here. Let the user continue trying to select.
-             // Do not prevent default or stop propagation either, let the click happen normally.
+        // Ignore clicks on feedback container or its buttons
+        if (event.target === feedbackContainer || event.target.closest('#mindshield-feedback-container') || event.target.tagName === 'BUTTON') {
+            console.log("Click on feedback container or button ignored.");
             return;
         }
-        // **** MODIFICATION END ****
 
-        // If we reach here, the click was on the intended target while selecting.
+        // Check if the click happened directly on the element we last highlighted
+        if (event.target !== currentHighlightedElement) {
+            console.log("Click target is not the highlighted element. Ignoring click for selection.", event.target, currentHighlightedElement);
+            return;
+        }
+
         console.log("Click detected on highlighted element:", currentHighlightedElement);
-        event.preventDefault(); // Prevent default action (like navigation) for the selected element
-        event.stopPropagation(); // Stop the event from bubbling further
+        event.preventDefault();
+        event.stopPropagation();
 
         const elToSelect = currentHighlightedElement;
-        stopSelecting(); // Stop selection mode *now* because a valid selection occurred
-
-        if (!elToSelect || elToSelect === document.body || elToSelect === document.documentElement) { console.log("Selection ignored (invalid target after check)."); return; }
+        if (!elToSelect || elToSelect === document.body || elToSelect === document.documentElement) {
+            console.log("Selection ignored (invalid target after check).");
+            return;
+        }
         processSelectedElement(elToSelect);
     }
 
@@ -559,32 +547,29 @@ if (typeof browser === 'undefined') var browser = chrome;
         // Record tap time for ghost click prevention
         lastTapTime = Date.now();
 
-        // Use the element that was highlighted *before* the touchend event started
-        const elToSelect = currentHighlightedElement;
-
-        // If no element was highlighted when the tap ended, ignore.
-        if (!elToSelect) {
-            console.log("Tap selection ignored (no highlighted element at time of tap).");
-            // Do NOT stop selection here. User might have tapped empty space.
+        // Ignore taps on feedback container or its buttons
+        if (event.target === feedbackContainer || event.target.closest('#mindshield-feedback-container') || event.target.tagName === 'BUTTON') {
+            console.log("Tap on feedback container or button ignored.");
             return;
         }
 
-        // Check if the primary touch point's target in the touchend event matches
-        // This is an extra check, though currentHighlightedElement should be reliable
-        // const touchTarget = event.changedTouches?.[0]?.target;
-        // if (touchTarget !== elToSelect) {
-        //     console.log("Tap end target doesn't match highlighted. Ignoring.");
-        //     return;
-        // }
+        // Use the element that was highlighted *before* the touchend event started
+        const elToSelect = currentHighlightedElement;
+
+        // If no element was highlighted when the tap ended, ignore
+        if (!elToSelect) {
+            console.log("Tap selection ignored (no highlighted element at time of tap).");
+            return;
+        }
 
         console.log("Tap detected on highlighted element:", elToSelect);
-        // Prevent default actions (like link navigation, or triggering a click event later) ONLY if we are selecting this element.
         event.preventDefault();
         event.stopPropagation();
 
-        stopSelecting(); // Stop selection mode because a valid selection tap occurred
-
-        if (elToSelect === document.body || elToSelect === document.documentElement) { console.log("Tap selection ignored (invalid target)."); return; }
+        if (elToSelect === document.body || elToSelect === document.documentElement) {
+            console.log("Tap selection ignored (invalid target).");
+            return;
+        }
         processSelectedElement(elToSelect);
     }
 
@@ -592,16 +577,19 @@ if (typeof browser === 'undefined') var browser = chrome;
         const selector = generateCSSSelector(el);
         if (!selector) {
             console.warn("Could not generate a reliable selector for the element.", el);
-            browser.runtime.sendMessage({ method: "selectionFailed", reason: "Could not generate selector" }).catch(e => console.debug("Popup likely closed:", e)); return;
+            browser.runtime.sendMessage({ method: "selectionFailed", reason: "Could not generate selector" }).catch(e => console.debug("Popup likely closed:", e));
+            return;
         }
         console.log("Selected element:", el, "Generated selector:", selector);
         if (!currentSiteIdentifier) {
             console.error("Cannot save selected element: currentSiteIdentifier is not set.");
-            browser.runtime.sendMessage({ method: "selectionFailed", reason: "Site identifier missing" }).catch(e => console.debug("Popup likely closed:", e)); return;
+            browser.runtime.sendMessage({ method: "selectionFailed", reason: "Site identifier missing" }).catch(e => console.debug("Popup likely closed:", e));
+            return;
         }
         const storageKey = `${currentSiteIdentifier}CustomHiddenElements`;
         browser.storage.sync.get(storageKey, function(result) {
-            let customSelectors = result[storageKey] || []; if (!Array.isArray(customSelectors)) customSelectors = [];
+            let customSelectors = result[storageKey] || [];
+            if (!Array.isArray(customSelectors)) customSelectors = [];
             if (!customSelectors.includes(selector)) {
                 customSelectors.push(selector);
                 browser.storage.sync.set({ [storageKey]: customSelectors }, function() {
@@ -612,11 +600,14 @@ if (typeof browser === 'undefined') var browser = chrome;
                         applyCustomElementStyles(currentSiteIdentifier, customSelectors);
                         browser.runtime.sendMessage({ method: "elementSelected", selector: selector }).catch(e => console.debug("Popup likely closed:", e));
                         console.log(`Selector added and styles updated for ${currentSiteIdentifier}: ${selector}`);
+                        lastSelectedSelector = selector;
+                        updateFeedbackMessage('Element hidden', true);
                     }
                 });
             } else {
                 console.log("Selector already hidden:", selector);
                 browser.runtime.sendMessage({ method: "selectionCanceled", reason: "Already hidden" }).catch(e => console.debug("Popup likely closed:", e));
+                updateFeedbackMessage('Element already hidden');
             }
         });
     }
