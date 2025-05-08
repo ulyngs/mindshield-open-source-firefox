@@ -533,10 +533,9 @@ if (typeof browser === 'undefined') var browser = chrome;
 
     function setupDragEvents() {
         let isDragging = false;
-        let currentX;
-        let currentY;
-        let initialX;
-        let initialY;
+        let currentX = parseInt(feedbackContainer.style.left) || 10;
+        let currentY = parseInt(feedbackContainer.style.top) || 10;
+        let initialX, initialY;
 
         function startDragging(e) {
             if (e.target.tagName === 'BUTTON' || e.target.closest('button')) return;
@@ -564,8 +563,15 @@ if (typeof browser === 'undefined') var browser = chrome;
             feedbackContainer.style.transition = 'all 0.2s ease';
         }
 
-        currentX = parseInt(feedbackContainer.style.left) || 10;
-        currentY = parseInt(feedbackContainer.style.top) || 10;
+        // Store listeners for cleanup
+        feedbackContainer._dragListeners = {
+            mousedown: startDragging,
+            touchstart: startDragging,
+            mousemove: drag,
+            mouseup: stopDragging,
+            touchmove: drag,
+            touchend: stopDragging
+        };
 
         feedbackContainer.addEventListener('mousedown', startDragging);
         document.addEventListener('mousemove', drag);
@@ -654,6 +660,15 @@ if (typeof browser === 'undefined') var browser = chrome;
         });
     }
 
+    function handleKeydown(event) {
+        if (event.key === 'Escape' && isSelecting) {
+            console.log("Escape key pressed, stopping selection mode");
+            event.preventDefault(); // Prevent browser from closing popup
+            event.stopPropagation(); // Stop event from bubbling
+            stopSelecting(false); // Mimic 'Done' button
+        }
+    }
+
     function startSelecting() {
         if (isSelecting) return;
         isSelecting = true;
@@ -662,38 +677,61 @@ if (typeof browser === 'undefined') var browser = chrome;
         createSelectorDisplay();
         createFeedbackContainer();
         updateFeedbackMessage('Click element to hide it');
-        document.addEventListener('mousemove', highlightElement, true);
+        document.addEventListener('mousemove', highlightElement, { capture: true });
         document.addEventListener('touchstart', highlightElement, { capture: true, passive: true });
-        document.addEventListener('click', selectElementOnClick, true);
-        document.addEventListener('touchend', selectElementOnTap, true);
+        document.addEventListener('click', selectElementOnClick, { capture: true });
+        document.addEventListener('touchend', selectElementOnTap, { capture: true });
+        document.addEventListener('keydown', handleKeydown, { capture: true }); // Add keydown listener
         document.body.classList.add('mindshield-selecting');
     }
 
     function stopSelecting(cancelled = false) {
-        if (!isSelecting) return;
+        if (!isSelecting) {
+            console.log("stopSelecting called but not selecting, skipping");
+            return;
+        }
+        console.log("Stopping selection mode, cancelled:", cancelled);
         isSelecting = false;
-        console.log("Stopping element selection mode.");
-        document.removeEventListener('mousemove', highlightElement, true);
+        document.removeEventListener('mousemove', highlightElement, { capture: true });
         document.removeEventListener('touchstart', highlightElement, { capture: true });
-        document.removeEventListener('click', selectElementOnClick, true);
-        document.removeEventListener('touchend', selectElementOnTap, true);
+        document.removeEventListener('click', selectElementOnClick, { capture: true });
+        document.removeEventListener('touchend', selectElementOnTap, { capture: true });
+        document.removeEventListener('keydown', handleKeydown, { capture: true }); // Remove keydown listener
         if (feedbackContainer) {
-            feedbackContainer.removeEventListener('mousedown', startDragging);
-            feedbackContainer.removeEventListener('touchstart', startDragging);
+            console.log("Removing feedback container");
+            // Remove drag-related listeners using stored references
+            if (feedbackContainer._dragListeners) {
+                feedbackContainer.removeEventListener('mousedown', feedbackContainer._dragListeners.mousedown);
+                feedbackContainer.removeEventListener('touchstart', feedbackContainer._dragListeners.touchstart, { passive: false });
+                document.removeEventListener('mousemove', feedbackContainer._dragListeners.mousemove);
+                document.removeEventListener('mouseup', feedbackContainer._dragListeners.mouseup);
+                document.removeEventListener('touchmove', feedbackContainer._dragListeners.touchmove, { passive: false });
+                document.removeEventListener('touchend', feedbackContainer._dragListeners.touchend);
+                delete feedbackContainer._dragListeners; // Clean up
+            }
             feedbackContainer.remove();
             feedbackContainer = null;
         }
-        document.removeEventListener('mousemove', drag);
-        document.removeEventListener('mouseup', stopDragging);
-        document.removeEventListener('touchmove', drag);
-        document.removeEventListener('touchend', stopDragging);
-        if (highlightOverlay) { highlightOverlay.remove(); highlightOverlay = null; }
-        if (selectorDisplay) { selectorDisplay.remove(); selectorDisplay = null; }
+        if (highlightOverlay) {
+            console.log("Removing highlight overlay");
+            highlightOverlay.remove();
+            highlightOverlay = null;
+        }
+        if (selectorDisplay) {
+            console.log("Removing selector display");
+            selectorDisplay.remove();
+            selectorDisplay = null;
+        }
         currentHighlightedElement = null;
         sessionHiddenSelectors = []; // Clear session selectors
         document.body.classList.remove('mindshield-selecting');
-        const tempStyle = document.getElementById(highlightStyleId); if(tempStyle) tempStyle.remove();
+        const tempStyle = document.getElementById(highlightStyleId);
+        if (tempStyle) {
+            console.log("Removing temp style");
+            tempStyle.remove();
+        }
         if (cancelled) {
+            console.log("Sending selectionCanceled message");
             browser.runtime.sendMessage({ method: "selectionCanceled" }).catch(e => console.debug("Popup likely closed:", e));
         }
     }
