@@ -11,7 +11,7 @@
   "default_locale": "en",
   "name": "MindShield - hide distractions online",
   "description": "Hide distractions on the web (YT, FB, IG, X, LI, or any other site).",
-  "version": "2.4",
+  "version": "2.4.1",
 
   "icons": {
     "48":  "images/icon-48.png",
