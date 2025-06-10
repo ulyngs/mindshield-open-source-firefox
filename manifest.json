@@ -1,26 +1,22 @@
 {
   "manifest_version": 2,
-
   "applications": {
     "gecko": {
-      "id": "mindshield@example.com", 
-      "strict_min_version": "58.0" 
+      "id": "mindshield@example.com",
+      "strict_min_version": "58.0"
     }
   },
-
   "default_locale": "en",
   "name": "MindShield - hide distractions online",
   "description": "Hide distractions on the web (YT, FB, IG, X, LI, or any other site).",
-  "version": "2.4.1",
-
+  "version": "2.6",
   "icons": {
-    "48":  "images/icon-48.png",
-    "96":  "images/icon-96.png",
+    "48": "images/icon-48.png",
+    "96": "images/icon-96.png",
     "128": "images/icon-128.png",
     "256": "images/icon-256.png",
     "512": "images/icon-512.png"
   },
-
   "browser_action": {
     "default_popup": "popup.html",
     "default_icon": {
@@ -30,24 +26,19 @@
       "38": "images/popup-38.png"
     }
   },
-
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
       "run_at": "document_start",
       "css": ["style.css"],
-      "js": ["browser-polyfill.min.js", "content.js"]
+      "js": ["browser-polyfill.min.js", "shared_data.js", "selectors.js", "content.js"],
+      "all_frames": false
     }
   ],
-
   "permissions": [
     "<all_urls>",
     "storage",
     "tabs",
     "activeTab"
-  ],
-
-  "web_accessible_resources": [
-    "images/*"
   ]
 }
